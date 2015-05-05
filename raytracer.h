@@ -15,12 +15,19 @@ typedef float Position;
 
 class Data {
 public:
-    bool  isIntersected = false;
-    bool  isIntersectedSphere = false;
-    bool  isIntersectedTriangle = false;
+    Data() {
+        isIntersected = false;
+        isIntersectedSphere = false;
+        isIntersectedTriangle = false;
+        color = {255, 255, 255};
+        distance = -1.0;
+    }
+    bool  isIntersected;
+    bool  isIntersectedSphere;
+    bool  isIntersectedTriangle;
 
-    Pixel color = {255, 255, 255};
-    float distance = -1.0;
+    Pixel color;
+    float distance;
 
     vec3  hitpoint;
     vec3  startToHitpoint;
@@ -260,5 +267,17 @@ vec3 RayTracer::raytracing(vec3 start, vec3 direct, int count) {
         return raytracing(start, direct, count - 1);
     }
 }
+
+class DistributedRayTracer {
+public:
+
+private:
+    RayTracer raytracer_;
+    std::vector<RayTracer> raytracers_;
+};
+
+
+
+
 
 #endif // RAYTRACER_H_INCLUDED
